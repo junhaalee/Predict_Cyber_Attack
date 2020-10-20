@@ -1,7 +1,7 @@
 from py2neo import Graph
 import json
 
-json_data=open('/Users/junha_lee/Desktop/tweets/random/random_100_relation.json').read()
+json_data=open('/Users/junha/Documents/Junha/Study/Projects/PredictCyberAttack/Data/User/General_100.json').read()
 
 data = json.loads(json_data)
 
@@ -22,8 +22,7 @@ def create_all_node():
     
     hackers = []
     nonhackers = []
-    
-            
+
     for user in range(0,len(data)):
         hackers.append(str(data[user]['username']))
     
@@ -38,6 +37,24 @@ def create_all_node():
         for follower in range(0,len(data[user]['follower'])):
             if str(data[user]['follower'][follower]) not in hackers:
                 nonhackers.append(data[user]['follower'][follower])
+​
+            
+    # for user in range(0,len(data)):
+    #     hackers.append(str(data[user]['username']).strip())
+    
+    
+    # for user in range(0,len(data)):
+        
+    #     for following in range(0,len(data[user]['following'])):
+    #         temp1 = str(data[user]['following'][following]).strip()
+    #         if temp1 not in hackers:
+    #             nonhackers.append(temp1)
+            
+            
+    #     for follower in range(0,len(data[user]['follower'])):
+    #         temp2 = str(data[user]['follower'][follower]).strip()
+    #         if temp2 not in hackers:
+    #             nonhackers.append(temp2)
 
     
     real_hackers=list(set(hackers))
